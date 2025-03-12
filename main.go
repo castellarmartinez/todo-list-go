@@ -20,6 +20,8 @@ func main() {
 		r.Get("/", hd.GetAllTasks)
 		r.Get("/{id}", hd.GetTaskByID)
 		r.Post("/", hd.CreateTask)
+		r.Put("/{id}", hd.UpdateTask)
+		r.Delete("/{id}", hd.DeleteTask)
 	})
 
 	log.Println("Server started on :8080")

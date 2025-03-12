@@ -51,3 +51,35 @@ func (r *TaskRepository) Create(task models.Task) (models.Task, error) {
 
 	return task, nil
 }
+
+func (r *TaskRepository) Update(id int, updatedTask models.Task) (models.Task, error) {
+	currentTask, exists := r.tasks[id]
+
+	if !exists {
+		return models.Task{}, errors.New("task not found")
+	}
+
+	if updatedTask.Title != "" {
+		currentTask.Title = updatedTask.Title
+	}
+
+	if updatedTask.Description != "" {
+		currentTask.Description = updatedTask.Description
+	}
+
+	currentTask.Completed = updatedTask.Completed
+
+	r.tasks[id] = currentTask
+	return currentTask, nil
+}
+
+func (r *TaskRepository) Delete(id int) error {
+	_, exists := r.tasks[id]
+
+	if !exists {
+		return errors.New("task not found")
+	}
+
+	delete(r.tasks, id)
+	return nil
+}
