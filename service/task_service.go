@@ -20,3 +20,7 @@ func (s *TaskService) GetAll() ([]models.Task, error) {
 func (s *TaskService) GetTaskByID(id int) (*models.Task, error) {
 	return s.repo.GetByID(id)
 }
+
+func (s *TaskService) CreateTask(task models.Task) (models.Task, error) {
+	return s.repo.Create(task)
+}

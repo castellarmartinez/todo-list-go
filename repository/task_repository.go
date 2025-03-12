@@ -7,7 +7,8 @@ import (
 )
 
 type TaskRepository struct {
-	tasks map[int]models.Task
+	tasks  map[int]models.Task
+	nextID int
 }
 
 func NewTaskRepository() *TaskRepository {
@@ -18,7 +19,8 @@ func NewTaskRepository() *TaskRepository {
 	}
 
 	return &TaskRepository{
-		tasks: tasks,
+		tasks:  tasks,
+		nextID: len(data.InitialTasks) + 1,
 	}
 }
 
@@ -40,4 +42,12 @@ func (r *TaskRepository) GetByID(id int) (*models.Task, error) {
 	}
 
 	return &task, nil
+}
+
+func (r *TaskRepository) Create(task models.Task) (models.Task, error) {
+	task.ID = r.nextID
+	r.tasks[r.nextID] = task
+	r.nextID++
+
+	return task, nil
 }
