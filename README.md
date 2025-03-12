@@ -55,11 +55,11 @@ go test -v ./...
 To check test coverage, generate a coverage profile and display it:
 
 ```
-go test -coverprofile=coverage.out ./...
+go test --coverprofile=coverage.out ./...
 ```
 
 ```
-go tool cover -func=coverage.out
+go tool cover --func=coverage.out
 ```
 
 ## How to use the API
