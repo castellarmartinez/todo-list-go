@@ -16,3 +16,7 @@ func NewTaskService(repo *repository.TaskRepository) *TaskService {
 func (s *TaskService) GetAll() ([]models.Task, error) {
 	return s.repo.GetAll()
 }
+
+func (s *TaskService) GetTaskByID(id int) (*models.Task, error) {
+	return s.repo.GetByID(id)
+}

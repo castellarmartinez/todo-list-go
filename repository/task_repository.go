@@ -3,6 +3,7 @@ package repository
 import (
 	"codebranch/data"
 	"codebranch/models"
+	"errors"
 )
 
 type TaskRepository struct {
@@ -29,4 +30,14 @@ func (r *TaskRepository) GetAll() ([]models.Task, error) {
 	}
 
 	return taskList, nil
+}
+
+func (r *TaskRepository) GetByID(id int) (*models.Task, error) {
+	task, exists := r.tasks[id]
+
+	if !exists {
+		return nil, errors.New("task not found")
+	}
+
+	return &task, nil
 }

@@ -17,7 +17,8 @@ func main() {
 	rt := chi.NewRouter()
 
 	rt.Route("/tasks", func(r chi.Router) {
-		rt.Get("/", hd.GetAllTasks)
+		r.Get("/", hd.GetAllTasks)
+		r.Get("/{id}", hd.GetTaskByID)
 	})
 
 	log.Println("Server started on :8080")
