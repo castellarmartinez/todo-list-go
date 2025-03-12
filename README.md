@@ -17,7 +17,7 @@ The application uses an in-memory data store to manage tasks and follows a clean
 #### 1. Clone project: 
 
 ```bash
-https://github.com/castellarmartinez/spring-boot-todo-list-api.git
+https://github.com/castellarmartinez/todo-list-go.git
 ```
 
 #### 2. Install dependencies
